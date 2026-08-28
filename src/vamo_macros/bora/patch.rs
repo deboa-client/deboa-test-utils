@@ -55,7 +55,7 @@ where
         .register_mock(mock)
         .await?;
 
-    let mut vamo = Vamo::from_client(client)?
+    let vamo = Vamo::from_client(client)?
         .base_url(
             server
                 .base_url()
