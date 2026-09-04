@@ -3,13 +3,7 @@ use caramelo::{
     matchers::{eq, err, truthy},
 };
 use deboa::{
-    cert::{Certificate, Identity},
-    conn::HttpConnectionPool,
-    dns::DnsResolver,
-    errors::{ConnectionError, DeboaError},
-    request::{DeboaRequest, IntoRequest},
-    response::DeboaResponse,
-    Client, HttpClient, InnerClient, TestResult,
+    Client, HttpClient, InnerClient, TestResult, cert::{Certificate, Identity}, conn::HttpConnectionPool, dns::DnsResolver, errors::{ConnectionError, DeboaError}, request::{DeboaRequest, FetchWith as _, IntoRequest}, response::DeboaResponse,
 };
 use easyhttpmock::{
     matchers::{method, path},
@@ -265,67 +259,6 @@ where
     Ok(())
 }
 
-/*
-async fn test_get_by_query_with_retries() {
-    let mut server = start_mock_server(|_req| async move {
-        Ok(make_response(StatusCode::BAD_GATEWAY, "pong"))
-    })
-    .await;
-
-    let client = client_with_cert();
-
-    let response = DeboaRequest::get(server.url("/comments/1"))?
-        .retries(2)
-        .send_with(client)
-        .await;
-
-    if let Err(err) = response {
-        assert_eq!(
-            err,
-            DeboaError::Response(ResponseError::Receive {
-                status_code: StatusCode::BAD_GATEWAY,
-                message: "Could not process request (502 Bad Gateway): pong".to_string(),
-            }),
-        );
-    }
-
-    server.stop().await;
-
-    Ok(())
-}
-*/
-
-/*
-async fn test_get_with_redirect() -> TestResult<()> {
-    let client = Client::default();
-
-    let url = if cfg!(feature = "http3-tokio") {
-        "https://tinyurl.com/bccjpjd7"
-    } else {
-        "https://tinyurl.com/bp6e548"
-    };
-
-    let response = DeboaRequest::get(url)?
-        .send_with(client)
-        .await?;
-
-    let server = if cfg!(feature = "http3-tokio") { "facebook.com" } else { "github.com" };
-
-    assert_eq!(response.status(), StatusCode::OK);
-    assert_eq!(
-        response
-            .headers()
-            .get("server")
-            .unwrap()
-            .to_str()
-            .unwrap(),
-        server
-    );
-
-    Ok(())
-}
-*/
-
 pub async fn test_try_into<S, I, C, P, R>(
     client: &Client<InnerClient<I, C, P, R>>,
     server: &mut EasyHttpMock<S>,
@@ -362,7 +295,6 @@ where
     Ok(())
 }
 
-/*
 pub async fn test_fetch_from_str<S, I, C, P, R>(
     client: &Client<InnerClient<I, C, P, R>>,
     server: &mut EasyHttpMock<S>,
@@ -388,7 +320,7 @@ where
 
     let first_post = server.url("/posts/1");
     let response = first_post
-        .fetch_with(client)
+        .fetch_with(&client)
         .await?;
     expect(response.status()).to_be(eq(200));
 
@@ -398,4 +330,3 @@ where
 
     Ok(())
 }
-*/

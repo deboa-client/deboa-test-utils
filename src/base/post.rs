@@ -91,7 +91,7 @@ where
         .register_mock(mock)
         .await?;
 
-    let mut form = EncodedForm::builder()
+    let form = EncodedForm::builder()
         .field("name", "deboa")
         .field("version", "0.0.1");
 
