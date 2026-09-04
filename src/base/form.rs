@@ -12,9 +12,9 @@ use std::{
 };
 
 pub fn test_encoded_form() -> TestResult<()> {
-    let mut form = EncodedForm::builder();
-    form.field("name", "deboa");
-    form.field("version", "0.0.1");
+    let form = EncodedForm::builder()
+        .field("name", "deboa")
+        .field("version", "0.0.1");
 
     let form = form.build();
 
@@ -26,8 +26,9 @@ pub fn test_encoded_form() -> TestResult<()> {
 pub fn test_multipart_form() -> TestResult<()> {
     let mut builder = MultiPartForm::builder();
 
-    builder.field("name", "deboa");
-    builder.field("version", "0.0.1");
+    builder = builder
+        .field("name", "deboa")
+        .field("version", "0.0.1");
 
     let boundary = builder.boundary();
 
@@ -40,8 +41,9 @@ pub fn test_multipart_form() -> TestResult<()> {
 
 pub async fn test_multipart_validate_form() -> TestResult<()> {
     let mut builder = MultiPartForm::builder();
-    builder.field("name", "deboa");
-    builder.field("version", "0.0.1");
+    builder = builder
+        .field("name", "deboa")
+        .field("version", "0.0.1");
 
     let my_boundary = builder
         .boundary()

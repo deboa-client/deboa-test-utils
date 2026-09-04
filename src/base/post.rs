@@ -91,9 +91,9 @@ where
         .register_mock(mock)
         .await?;
 
-    let mut form = EncodedForm::builder();
-    form.field("name", "deboa");
-    form.field("version", "0.0.1");
+    let mut form = EncodedForm::builder()
+        .field("name", "deboa")
+        .field("version", "0.0.1");
 
     let request = DeboaRequest::post(server.url("/posts"))?
         .version(protocol_version)
@@ -131,9 +131,9 @@ where
     R: DnsResolver + Send,
     S: ServerAdapter,
 {
-    let mut form = MultiPartForm::builder();
-    form.field("name", "deboa");
-    form.field("version", "0.0.1");
+    let form = MultiPartForm::builder()
+        .field("name", "deboa")
+        .field("version", "0.0.1");
 
     let mock = Mock::of(
         given(method(Method::POST).and(path("/posts"))).will_return(
