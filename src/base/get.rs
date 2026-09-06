@@ -3,7 +3,13 @@ use caramelo::{
     matchers::{eq, err, truthy},
 };
 use deboa::{
-    Client, HttpClient, InnerClient, TestResult, cert::{Certificate, Identity}, conn::HttpConnectionPool, dns::DnsResolver, errors::{ConnectionError, DeboaError}, request::{DeboaRequest, FetchWith as _, IntoRequest}, response::DeboaResponse,
+    cert::{Certificate, Identity},
+    conn::HttpConnectionPool,
+    dns::DnsResolver,
+    errors::{ConnectionError, DeboaError},
+    request::{DeboaRequest, FetchWith as _, IntoRequest},
+    response::DeboaResponse,
+    Client, HttpClient, InnerClient, TestResult,
 };
 use easyhttpmock::{
     matchers::{method, path},
