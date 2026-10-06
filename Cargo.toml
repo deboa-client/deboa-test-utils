@@ -38,5 +38,5 @@ vamo = { workspace = true, default-features = false }
 vamo-macros = { workspace = true, features = [
   "json",
 ], default-features = false }
-#vetis = { path = "../../vetis/vetis" }
-vetis = { version = "0.1.7-beta.3" }
+vetis = { path = "../../vetis/vetis" }
+#vetis = { version = "0.1.7-beta.3" }
