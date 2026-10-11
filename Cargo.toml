@@ -10,6 +10,15 @@ license.workspace = true
 rust-version.workspace = true
 
 [dependencies]
+#easyhttpmock = { version = "0.1.5-beta.2" }
+#vetis = { version = "0.1.7-beta.3" }
+
+# easyhttpmock = { path = "../../easyhttpmock/easyhttpmock" }
+# vetis = { path = "../../vetis/vetis" }
+
+easyhttpmock = { git = "https://github.com/easyhttpmock/easyhttpmock.git" }
+vetis = { git = "https://github.com/vetis-server/vetis.git", default-features = false }
+
 bytes = { workspace = true }
 caramelo = { workspace = true }
 ciborium = "0.2.2"
@@ -19,8 +28,6 @@ deboa-extras = { workspace = true, default-features = false, features = [
 ] }
 deboa-fory = { workspace = true, default-features = false }
 deboa-macros = { workspace = true }
-easyhttpmock = { path = "../../easyhttpmock/easyhttpmock" }
-#easyhttpmock = { version = "0.1.5-beta.2" }
 env_logger = "0.11.11"
 fory = "1.5.0"
 fory-core = "1.5.0"
@@ -38,5 +45,3 @@ vamo = { workspace = true, default-features = false }
 vamo-macros = { workspace = true, features = [
   "json",
 ], default-features = false }
-vetis = { path = "../../vetis/vetis" }
-#vetis = { version = "0.1.7-beta.3" }
