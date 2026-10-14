@@ -30,7 +30,7 @@ pub fn test_encoded_form() -> TestResult<()> {
 pub async fn test_submit_encoded_form<S, I, C, P, R>(
     client: &Client<InnerClient<I, C, P, R>>,
     server: &mut EasyHttpMock<S>,
-    protocol_version: http::Version
+    protocol_version: http::Version,
 ) -> TestResult<()>
 where
     I: Identity + Send + Clone,
