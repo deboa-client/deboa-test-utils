@@ -62,6 +62,7 @@ where
 pub async fn test_hook<S, I, C, P, R>(
     client: Client<InnerClient<I, C, P, R>>,
     server: &mut EasyHttpMock<S>,
+    protocol_version: http::Version,
 ) -> TestResult<()>
 where
     I: Identity + Send + Clone + 'static,
@@ -90,7 +91,9 @@ where
             next.call(req).await
         });
 
-    let request = DeboaRequest::get(server.url("/posts/1"))?.build()?;
+    let request = DeboaRequest::get(server.url("/posts/1"))?
+        .version(protocol_version)
+        .build()?;
     let response: DeboaResponse = client
         .execute(request)
         .await?;

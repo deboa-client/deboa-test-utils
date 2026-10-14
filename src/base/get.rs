@@ -200,6 +200,7 @@ where
 
 pub async fn test_get_invalid_server<I, C, P, R>(
     client: &Client<InnerClient<I, C, P, R>>,
+    protocol_version: http::Version,
 ) -> TestResult<()>
 where
     I: Identity + Send + Clone,
@@ -208,6 +209,7 @@ where
     R: DnsResolver + Send,
 {
     let request = DeboaRequest::get("https://invalid-server.com/posts")?
+    .version(protocol_version)
         .text("test")
         .build()?;
     let response: deboa::Result<DeboaResponse> = client
@@ -268,6 +270,7 @@ where
 pub async fn test_try_into<S, I, C, P, R>(
     client: &Client<InnerClient<I, C, P, R>>,
     server: &mut EasyHttpMock<S>,
+    protocol_version: http::Version,
 ) -> TestResult<()>
 where
     I: Identity + Send + Clone,
@@ -304,6 +307,7 @@ where
 pub async fn test_fetch_from_str<S, I, C, P, R>(
     client: &Client<InnerClient<I, C, P, R>>,
     server: &mut EasyHttpMock<S>,
+    protocol_version: http::Version,
 ) -> TestResult<()>
 where
     I: Identity + Send + Clone,
