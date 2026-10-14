@@ -291,7 +291,7 @@ where
         .register_mock(mock)
         .await?;
 
-    let first_post = server.url("/posts/1");
+    let first_post = (server.url("/posts/1"), protocol_version);
     let response = client
         .execute(first_post.into_request()?)
         .await?;
@@ -328,7 +328,7 @@ where
         .register_mock(mock)
         .await?;
 
-    let first_post = server.url("/posts/1");
+    let first_post = (server.url("/posts/1"), protocol_version);
     let response = first_post
         .fetch_with(&client)
         .await?;
