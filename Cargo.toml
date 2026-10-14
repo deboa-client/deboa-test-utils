@@ -10,10 +10,6 @@ license.workspace = true
 rust-version.workspace = true
 
 [dependencies]
-easyhttpmock = { version = "0.1.5-beta.2" }
-vetis = { version = "0.1.7-beta.3" }
-
-bytes = { workspace = true }
 caramelo = { workspace = true }
 ciborium = "0.2.2"
 deboa.workspace = true
@@ -22,16 +18,12 @@ deboa.workspace = true
 # ] }
 # deboa-fory = { workspace = true, default-features = false }
 # deboa-macros = { workspace = true }
-env_logger = "0.11.11"
+easyhttpmock = { version = "0.1.5-beta.2" }
 fory = "1.5.0"
-fory-core = "1.5.0"
-futures-util = { workspace = true }
 http = { workspace = true }
 http-body-util = { workspace = true }
 mime = { version = "0.3.17" }
-multer = "3.1.0"
 once_cell = "1.21.4"
-rand = { workspace = true }
 serde = { workspace = true }
 tackle = { workspace = true }
 url = { workspace = true }
@@ -39,3 +31,4 @@ url = { workspace = true }
 # vamo-macros = { workspace = true, features = [
 #   "json",
 # ], default-features = false }
+#vetis = { version = "0.1.7-beta.3" }
