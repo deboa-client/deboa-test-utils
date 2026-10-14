@@ -1,28 +1,28 @@
 use caramelo::{expect, matchers::eq};
 use deboa::{
+    Client, HttpClient, InnerClient, TestResult,
     cert::{Certificate, Identity},
     conn::HttpConnectionPool,
     dns::DnsResolver,
     request::DeboaRequest,
-    Client, HttpClient, InnerClient, TestResult,
 };
 use easyhttpmock::{
-    matchers::{method, path},
-    mock::{given, AsyncMatcherExt, Mock, StatusCodeExt},
-    server::ServerAdapter,
     EasyHttpMock,
+    matchers::{method, path},
+    mock::{AsyncMatcherExt, Mock, StatusCodeExt, given},
+    server::ServerAdapter,
 };
 use http::{Method, StatusCode};
 
 pub async fn test_patch<S, I, C, P, R>(
-    client: Client<InnerClient<I, C, P, R>>,
+    client: &Client<InnerClient<I, C, P, R>>,
     server: &mut EasyHttpMock<S>,
     protocol_version: http::Version,
 ) -> TestResult<()>
 where
-    I: Identity + Send + Clone + 'static,
-    C: Certificate + Send + Clone + 'static,
-    P: HttpConnectionPool<Identity = I, Certificate = C> + Send + 'static,
+    I: Identity + Send + Clone,
+    C: Certificate + Send + Clone,
+    P: HttpConnectionPool<Identity = I, Certificate = C> + Send,
     R: DnsResolver + Send,
     S: ServerAdapter,
 {

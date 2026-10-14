@@ -1,4 +1,4 @@
-use deboa::{url::IntoUrl as _, TestResult};
+use deboa::{TestResult, url::IntoUrl as _};
 
 pub fn test_url() -> TestResult<()> {
     let url_str = "http://example.com";

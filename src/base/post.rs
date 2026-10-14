@@ -1,19 +1,19 @@
 use caramelo::{expect, matchers::eq};
 use deboa::{
+    Client, HttpClient, InnerClient, TestResult,
     cert::{Certificate, Identity},
     conn::HttpConnectionPool,
     dns::DnsResolver,
     form::EncodedForm,
     request::DeboaRequest,
-    Client, HttpClient, InnerClient, TestResult,
 };
 use easyhttpmock::{
-    matchers::{method, path},
-    mock::{given, AsyncMatcherExt, Mock, StatusCodeExt},
-    server::ServerAdapter,
     EasyHttpMock,
+    matchers::{method, path},
+    mock::{AsyncMatcherExt, Mock, StatusCodeExt, given},
+    server::ServerAdapter,
 };
-use http::{header::CONTENT_TYPE, Method, StatusCode};
+use http::{Method, StatusCode, header::CONTENT_TYPE};
 
 pub async fn test_post<S, I, C, P, R>(
     client: &Client<InnerClient<I, C, P, R>>,

@@ -1,4 +1,4 @@
-use deboa::{request::DeboaRequest, url::IntoUrl, TestResult};
+use deboa::{TestResult, request::DeboaRequest, url::IntoUrl};
 use http_body_util::BodyExt;
 use std::str::FromStr;
 

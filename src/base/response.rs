@@ -1,4 +1,4 @@
-use deboa::{response::DeboaResponse, TestResult};
+use deboa::{TestResult, response::DeboaResponse};
 use std::fs::remove_file;
 
 const SAMPLE_TEST: &[u8] = b"Hello, world!";

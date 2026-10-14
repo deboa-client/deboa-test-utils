@@ -1,8 +1,8 @@
 use deboa::{
+    Client, InnerClient, TestResult,
     cert::{Certificate, Identity},
     conn::HttpConnectionPool,
     dns::DnsResolver,
-    Client, InnerClient, TestResult,
 };
 use http::Uri;
 

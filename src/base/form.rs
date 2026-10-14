@@ -1,19 +1,19 @@
 use caramelo::{expect, matchers::eq};
 use deboa::{
+    Client, InnerClient, TestResult,
     cert::{Certificate, Identity},
     conn::HttpConnectionPool,
     dns::DnsResolver,
     form::EncodedForm,
     request::DeboaRequest,
-    Client, InnerClient, TestResult,
 };
 use easyhttpmock::{
-    matchers::{header_value, method, path},
-    mock::{given, AsyncMatcherExt, Mock, StatusCodeExt},
-    server::ServerAdapter,
     EasyHttpMock,
+    matchers::{header_value, method, path},
+    mock::{AsyncMatcherExt, Mock, StatusCodeExt, given},
+    server::ServerAdapter,
 };
-use http::{header::CONTENT_TYPE, Method, StatusCode};
+use http::{Method, StatusCode, header::CONTENT_TYPE};
 
 pub fn test_encoded_form() -> TestResult<()> {
     let form = EncodedForm::builder()
