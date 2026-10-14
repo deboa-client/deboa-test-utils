@@ -209,7 +209,7 @@ where
     R: DnsResolver + Send,
 {
     let request = DeboaRequest::get("https://invalid-server.com/posts")?
-    .version(protocol_version)
+        .version(protocol_version)
         .text("test")
         .build()?;
     let response: deboa::Result<DeboaResponse> = client
