@@ -17,6 +17,7 @@ use http::{Method, StatusCode};
 pub async fn test_delete<S, I, C, P, R>(
     client: &Client<InnerClient<I, C, P, R>>,
     server: &mut EasyHttpMock<S>,
+    protocol_version: http::Version,
 ) -> TestResult<()>
 where
     I: Identity + Send + Clone,
@@ -38,6 +39,7 @@ where
         .await?;
 
     let response = DeboaRequest::delete(server.url("/posts/1"))?
+        .version(protocol_version)
         .send_with(client)
         .await?;
 
