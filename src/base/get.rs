@@ -87,29 +87,12 @@ where
     let request = DeboaRequest::get(server.url("/posts/1"))?
         .version(protocol_version)
         .build()?;
-    let http_version = request.version();
     let response = client
         .execute(request)
         .await;
 
     if skip {
-        match http_version {
-            Version::HTTP_11 => {
-                let response = response?;
-                expect(response.status()).to_be(eq(StatusCode::OK));
-            }
-            Version::HTTP_2 => {
-                let response = response?;
-                expect(response.status()).to_be(eq(StatusCode::OK));
-            }
-            Version::HTTP_3 => {
-                let error = DeboaError::Connection(ConnectionError::Udp {
-                    message: "Could not connect to server: aborted by peer: the cryptographic handshake failed: error 120: peer doesn't support any known protocol".to_string(),
-                });
-                expect(response.unwrap_err()).to_be(eq(error));
-            }
-            _ => unreachable!(),
-        }
+        expect(response?.status()).to_be(eq(StatusCode::OK));
     } else {
         expect(response).to_be(err());
     }
