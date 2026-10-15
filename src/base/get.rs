@@ -7,7 +7,6 @@ use deboa::{
     cert::{Certificate, Identity},
     conn::HttpConnectionPool,
     dns::DnsResolver,
-    errors::{ConnectionError, DeboaError},
     request::{DeboaRequest, FetchWith as _, IntoRequest},
     response::DeboaResponse,
 };
