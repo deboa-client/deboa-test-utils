@@ -10,13 +10,11 @@ license.workspace = true
 rust-version.workspace = true
 
 [dependencies]
-bytes = { workspace = true }
 caramelo = { workspace = true }
 ciborium = "0.2.2"
 deboa.workspace = true
 easyhttpmock = { version = "0.1.5-beta.2" }
 fory = "1.5.0"
-futures = { workspace = true }
 http = { workspace = true }
 http-body-util = { workspace = true }
 mime = { version = "0.3.17" }
