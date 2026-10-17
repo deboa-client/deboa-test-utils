@@ -10,7 +10,7 @@ use deboa::{
 use easyhttpmock::{
     EasyHttpMock,
     matchers::{header_value, method, path},
-    mock::{AsyncMatcherExt, Mock, StatusCodeExt, given},
+    mock::{AsyncMatcherExt, Mock, StatusCodeExt as _, given},
     server::ServerAdapter,
 };
 use http::{Method, StatusCode, header::CONTENT_TYPE};

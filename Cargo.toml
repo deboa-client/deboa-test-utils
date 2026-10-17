@@ -10,16 +10,13 @@ license.workspace = true
 rust-version.workspace = true
 
 [dependencies]
+bytes = { workspace = true }
 caramelo = { workspace = true }
 ciborium = "0.2.2"
 deboa.workspace = true
-# deboa-extras = { workspace = true, default-features = false, features = [
-#   "serialization_all",
-# ] }
-# deboa-fory = { workspace = true, default-features = false }
-# deboa-macros = { workspace = true }
 easyhttpmock = { version = "0.1.5-beta.2" }
 fory = "1.5.0"
+futures = { workspace = true }
 http = { workspace = true }
 http-body-util = { workspace = true }
 mime = { version = "0.3.17" }
@@ -27,8 +24,3 @@ once_cell = "1.21.4"
 serde = { workspace = true }
 tackle = { workspace = true }
 url = { workspace = true }
-# vamo = { workspace = true, default-features = false }
-# vamo-macros = { workspace = true, features = [
-#   "json",
-# ], default-features = false }
-#vetis = { version = "0.1.7-beta.3" }
